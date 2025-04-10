@@ -20,7 +20,7 @@ A simple, lightweight utility that automatically cleans up orphaned Docker image
 
 1. Download the installation script:
    ```bash
-   curl -O https://raw.githubusercontent.com/kaakati/macos-docker-cleaner/main/install_docker_cleanup_hourly.sh
+   curl -O https://raw.githubusercontent.com/Kaakati/macos-docker-cleaner/refs/heads/main/install_docker_cleanup_hourly.sh
    ```
 
 2. Make it executable:
