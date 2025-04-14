@@ -17,12 +17,12 @@ cat > "$SCRIPTS_DIR/docker_cleanup.sh" << 'EOF'
 #!/bin/bash
 # Simple script to remove orphaned Docker images
 
+# Set PATH to include Docker
+export PATH=$PATH:/usr/local/bin
+
 # Remove all dangling (untagged) images
 echo "$(date): Removing dangling Docker images..."
 docker image prune -f
-
-# Optional: To also remove unused images (not used in last 24h)
-# docker image prune -a --filter "until=24h" -f
 
 echo "$(date): Cleanup complete"
 EOF
@@ -49,6 +49,11 @@ cat > "$LAUNCH_AGENTS_DIR/com.user.docker.cleanup.plist" << EOF
     <string>$LOG_DIR/docker_cleanup.log</string>
     <key>StandardErrorPath</key>
     <string>$LOG_DIR/docker_cleanup.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
 </dict>
 </plist>
 EOF
